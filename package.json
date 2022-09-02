@@ -60,6 +60,7 @@
     "@dcloudio/uni-stacktracey": "3.0.0-alpha-3050320220729001",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3050320220729001",
     "eslint": "^8.23.0",
+    "sass": "^1.54.8",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
     "vite": "^2.9.14"
