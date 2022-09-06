@@ -9,6 +9,7 @@ specifiers:
   '@dcloudio/uni-cli-shared': 3.0.0-alpha-3050320220729001
   '@dcloudio/uni-components': 3.0.0-alpha-3050320220729001
   '@dcloudio/uni-h5': 3.0.0-alpha-3050320220729001
+  '@dcloudio/uni-helper-json': ^1.0.13
   '@dcloudio/uni-mp-alipay': 3.0.0-alpha-3050320220729001
   '@dcloudio/uni-mp-baidu': 3.0.0-alpha-3050320220729001
   '@dcloudio/uni-mp-kuaishou': 3.0.0-alpha-3050320220729001
@@ -54,6 +55,7 @@ devDependencies:
   '@dcloudio/types': 3.0.13
   '@dcloudio/uni-automator': 3.0.0-alpha-3050320220729001_postcss@8.4.16+vue@3.2.38
   '@dcloudio/uni-cli-shared': 3.0.0-alpha-3050320220729001_postcss@8.4.16+vue@3.2.38
+  '@dcloudio/uni-helper-json': 1.0.13
   '@dcloudio/uni-stacktracey': 3.0.0-alpha-3050320220729001
   '@dcloudio/vite-plugin-uni': 3.0.0-alpha-3050320220729001_zddwyonxtcbgbv37asstijelnm
   eslint: 8.23.0
@@ -652,6 +654,10 @@ packages:
       - ts-node
       - vue
     dev: false
+
+  /@dcloudio/uni-helper-json/1.0.13:
+    resolution: {integrity: sha512-FO9Iu4zW4td3Tr+eiCDWuele2ehkJ4qxQ/UhpAMLjso+ZdWz6NagK5Syh6cdy1hoDqbxpNoqnLynuJXe81Ereg==}
+    dev: true
 
   /@dcloudio/uni-i18n/3.0.0-alpha-3050320220729001:
     resolution: {integrity: sha512-xlrc0nkbsR2hB6Puhu6/z+Zgm2Ze246DzGjz0ulIAWI/W1uyVgx7cE8UrV2ppAUIKlE47ZX+GSu689j0GDo8wg==}

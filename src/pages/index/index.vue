@@ -1,4 +1,12 @@
 <script setup>
+import { friends } from '../../utils/data'
+import { dateTime } from '../../utils/dateTime'
+
+function changeTime(date) {
+  return dateTime(date)
+}
+
+const friend = ref(friends())
 </script>
 
 <template>
@@ -48,24 +56,24 @@
       </view>
 
       <view class="friends">
-        <view class="friend-list">
+        <view v-for="(i, idx) in friend" :key="idx" class="friend-list">
           <view class="friend-list-l">
             <text class="tip">
-              1
+              {{ i.tip }}
             </text>
-            <image src="../../static/images/zhongli.jpeg" />
+            <image :src="i.imgurl" />
           </view>
           <view class="friend-list-r">
             <view class="top">
               <view class="name">
-                钟离
+                {{ i.name }}
               </view>
               <view class="time">
-                13:14
+                {{ changeTime(i.time) }}
               </view>
             </view>
             <view class="news">
-              就普遍理性而论，这次的花销就照例记在往生堂的帐上吧。
+              {{ i.news }}
             </view>
           </view>
         </view>
@@ -146,13 +154,16 @@
 }
 
 .main {
-  padding: 88rpx $uni-spacing-col-base 0;
-  width: 95%;
+  padding-top: 104rpx;
 }
 
 .friend-list {
   height: 96rpx;
-  padding: 16rpx 0;
+  padding: 16rpx $uni-spacing-col-base;
+
+  &:active {
+    background-color: $uni-bg-color-grey;
+  }
 
   .friend-list-l {
     position: relative;
@@ -162,7 +173,7 @@
       width: 96rpx;
       height: 96rpx;
       border-radius: $uni-border-radius-base;
-      background-color: $uni-color-primary;
+      background-color: #E1FFEE;
     }
 
     .tip {
@@ -196,6 +207,7 @@
       }
 
       .time {
+        /* display: none; */
         float: right;
         font-size: $uni-font-size-sm;
         color: $uni-text-color-disable;
