@@ -82,12 +82,13 @@ const friend = ref(friends())
   </view>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: var(--status-bar-height);
 }
 
 .top-bar {
