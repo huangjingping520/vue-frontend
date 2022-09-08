@@ -6,6 +6,20 @@
         // "navigationBarTitleText": "uni-app",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/login/index",
+      "style": {
+        // "navigationBarTitleText": "login"
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/sign/index",
+      "style": {
+        // "navigationBarTitleText": "sign"
+        "navigationStyle": "custom"
+      }
     }
   ],
   "globalStyle": {
