@@ -7,6 +7,9 @@ const invalid = ref(false)
 const isEmploy = ref(false)
 const lookUrl = ref('https://merlinalex-pic.oss-cn-hangzhou.aliyuncs.com/img/eye-off.png')
 const email = ref('')
+const isok = ref(false)
+const user = ref('')
+const pwd = ref('')
 
 const changeLook = function () {
   if (isLook.value) {
@@ -35,13 +38,36 @@ const isEmailFn = function (e) {
     }
   }
 }
+
+const toLogin = function () {
+  uni.navigateBack({
+    delta: 1
+  })
+}
+
+const isOk = function () {
+  if (isUser.value && isEmail.value && pwd.value.length > 5)
+    isok.value = true
+  else
+    isok.value = false
+}
+
+const getUser = function (e) {
+  user.value = e.detail.value
+  isOk()
+}
+
+const getPwd = function (e) {
+  pwd.value = e.detail.value
+  isOk()
+}
 </script>
 
 <template>
   <view class="content">
     <!-- top-bar start -->
     <view class="top-bar">
-      <view class="top-bar-left">
+      <view class="top-bar-left" @tap="toLogin">
         <image src="https://merlinalex-pic.oss-cn-hangzhou.aliyuncs.com/img/back.png" class="back" />
       </view>
     </view>
@@ -57,7 +83,8 @@ const isEmailFn = function (e) {
       </view>
       <view class="inputs">
         <view class="inputs-div">
-          <input type="text" placeholder="请输入用户名" class="user" placeholder-style="color: #aaa; font-weight: 400;">
+          <input type="text" placeholder="请输入用户名" class="user" placeholder-style="color: #aaa; font-weight: 400;"
+            @input="getUser">
           <view v-if="isEmploy" class="employ">
             用户名已被占用
           </view>
@@ -65,19 +92,20 @@ const isEmailFn = function (e) {
         </view>
         <view class="inputs-div">
           <input type="email" placeholder="请输入邮箱" class="email" placeholder-style="color: #aaa; font-weight: 400;"
-            @blur="isEmailFn">
+            @input="isEmailFn">
           <view v-if="invalid" class="invalid">
             邮箱无效
           </view>
           <image v-if="isEmail" src="https://merlinalex-pic.oss-cn-hangzhou.aliyuncs.com/img/correct.png" class="ok" />
         </view>
         <view class="inputs-div">
-          <input :type="type" placeholder="请输入密码" class="pwd" placeholder-style="color: #aaa; font-weight: 400;">
+          <input :type="type" placeholder="请输入密码" class="pwd" placeholder-style="color: #aaa; font-weight: 400;"
+            @input="getPwd">
           <image class="look" :src="lookUrl" @tap="changeLook" />
         </view>
       </view>
     </view>
-    <view class="submit">
+    <view :class="[{ submit: isok }, { submit1: !isok }]">
       注册
     </view>
   </view>
@@ -190,5 +218,18 @@ const isEmailFn = function (e) {
   line-height: 96rpx;
   text-align: center;
   color: $uni-text-color;
+}
+
+.submit1 {
+  margin: 0 auto;
+  width: 520rpx;
+  height: 96rpx;
+  background-color: rgba(39, 40, 50, 0.2);
+  border-radius: 48rpx;
+  font-size: 48rpx;
+  font-weight: 400;
+  line-height: 96rpx;
+  text-align: center;
+  color: $uni-text-color-inverse;
 }
 </style>

@@ -1,12 +1,46 @@
 <script setup>
+const user = ref('')
+const pwd = ref('')
 
+const testFn = function () {
+  uni.request({
+    url: 'http://127.0.0.1:3001/login/match',
+    data: {
+      data: 'merlin',
+      pwd: '123456'
+    },
+    method: 'POST',
+    success: data => {
+      console.log(data)
+    }
+  })
+}
+
+const toSignUp = function () {
+  uni.navigateTo({
+    url: '../sign/index'
+  })
+}
+
+const getUser = function (e) {
+  user.value = e.detail.value
+}
+
+const getPwd = function (e) {
+  pwd.value = e.detail.value
+}
+
+const login = function () {
+  if (user.value && pwd.value)
+    console.log('update')
+}
 </script>
 
 <template>
   <view class="content">
     <!-- top-bar start -->
     <view class="top-bar">
-      <view class="top-bar-right">
+      <view class="top-bar-right" @tap="toSignUp">
         <view class="text">
           注册
         </view>
@@ -26,14 +60,16 @@
         您好，欢迎来到 moan!
       </view>
       <view class="inputs">
-        <input type="text" placeholder="用户名/邮箱" class="user" placeholder-style="color: #aaa; font-weight: 400;">
-        <input type="password" placeholder="密码" class="pwd" placeholder-style="color: #aaa; font-weight: 400;">
+        <input type="text" placeholder="用户名/邮箱" class="user" placeholder-style="color: #aaa; font-weight: 400;"
+          @blur="getUser">
+        <input type="password" placeholder="密码" class="pwd" placeholder-style="color: #aaa; font-weight: 400;"
+          @blur="getPwd">
       </view>
       <view class="tips">
         输入用户或密码错误！！
       </view>
     </view>
-    <view class="submit">
+    <view class="submit" @tap="testFn">
       登录
     </view>
   </view>
